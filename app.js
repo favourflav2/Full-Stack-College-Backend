@@ -5,12 +5,14 @@ import dotenv from "dotenv"
 import cors from 'cors'
 import collegeRoutes from "./routes/collegeRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
+import helmet from 'helmet'
 
 
 const app = express()
 
 // Middleware
 dotenv.config()
+app.use(helmet())
 app.use(morgan("dev"))
 app.use(express.json({limit:"30mb",extended:true}))
 app.use(express.urlencoded({limit:"30mb",extended:true}))
